@@ -1,10 +1,17 @@
 #include "main.h"
-
+/**
+ * _putchar - Executes function to put a char
+ * @c: char
+ * Description: Puts a char
+ * Return: A char
+ */
 int _putchar(int c)
 {
 	return (write(1, &c, 1));
 }
-
+/**
+ *
+ */
 int _puts(char *str)
 {
 	int count;
@@ -19,6 +26,9 @@ int _puts(char *str)
 	return (count);
 }
 
+/**
+ *
+ */
 int print_digit(long n, int base)
 {
 	int count;
@@ -42,6 +52,9 @@ int print_digit(long n, int base)
 	}
 
 }
+/**
+ *
+ */
 
 int print_format(char specifier, va_list argp)
 {
