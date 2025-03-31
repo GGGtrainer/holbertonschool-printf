@@ -32,7 +32,10 @@ int _printf(const char *format, ...)
 				int j = 0;
 				char *str = va_arg(args, char *);
 
-				if (!str) str = '\0';
+				if (!str)
+				{
+					str = "(null)";
+				}
 				while (str[j])
 					count += _putchar(str[j++]);
 			}
@@ -55,4 +58,3 @@ int _printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
-
