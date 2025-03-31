@@ -17,12 +17,7 @@ int _printf(const char *format, ...)
 
 	while (format[i])
 	{
-		if (format[i] == '%' && !format[i + 1])
-		{
-			va_end(args);
-			return (-1); // Handle single '%' at end
-		}
-		else if (format[i] == '%' && format[i + 1])
+		if (format[i] == '%' && format[i + 1])
 		{
 			i++;
 			if (format[i] == 'd' || format[i] == 'i')
