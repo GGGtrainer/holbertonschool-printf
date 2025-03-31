@@ -1,102 +1,60 @@
 #include "main.h"
-/**
- * _putchar - Executes function to put a char
- * @c: char
- * Description: Puts a char
- * Return: A char
- */
-int _putchar(int c)
-{
-	return (write(1, &c, 1));
-}
-/**
- *
- */
-int _puts(char *str)
-{
-	int count;
-
-	count = 0;
-		while (*str != '\0')
-		{
-			_putchar((int)*str);
-			++count;
-			++str;
-		}
-	return (count);
-}
 
 /**
- *
+ * _printf - simplified version of printf
+ * @format: format string
+ * Return: number of characters printed
  */
-int print_digit(long n, int base)
-{
-	int count;
-	char *symbols;
-
-	symbols = "0123456789abcdef";
-
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		return (print_digit(-n, base) + 1);
-	}
-	else if (n < base)
-	{
-		return (_putchar(symbols[n]));
-	}
-	else
-	{
-		count = print_digit(n / base, base);
-		return (count + print_digit(n % base, base));
-	}
-
-}
-/**
- *
- */
-
-int print_format(char specifier, va_list argp)
-{
-	int count;
-
-	count = 0;
-	if (specifier == 'c')
-		count += _putchar(va_arg(argp, int));
-	else if (specifier == 's')
-		count += _puts(va_arg(argp, char *));
-	else if (specifier == 'd')
-		count += print_digit((long)va_arg(argp, int), 10);
-	else if (specifier == 'x')
-		count += print_digit((long)va_arg(argp, unsigned int), 16);
-	else
-		count += write(1, &specifier, 1);
-	return (count);
-
-}
-
-
-/**
- * _printf - prints strings, chars, ints and unsigned ints
- * return: count
- *
- */
-
 int _printf(const char *format, ...)
 {
-	va_list argp;
-	int count;
+	va_list args;
+	int i = 0, count = 0;
 
-	va_start(argp, format);
-	count = 0;
-	while (*format != '\0')
+	if (!format)
+		return (-1);
+
+	va_start(args, format);
+
+	while (format[i])
 	{
-		if (*format == '%')
-			count += print_format(*(++format), argp);
+		if (format[i] == '%' && format[i + 1])
+		{
+			i++;
+			if (format[i] == 'd' || format[i] == 'i')
+			{
+				count += print_int(va_arg(args, int));
+			}
+			else if (format[i] == 'c')
+			{
+				count += _putchar(va_arg(args, int));
+			}
+			else if (format[i] == 's')
+			{
+				char *str = va_arg(args, char *);
+				int j = 0;
+
+				if (!str) str = "(null)";
+				while (str[j])
+					count += _putchar(str[j++]);
+			}
+			else if (format[i] == '%')
+			{
+				count += _putchar('%');
+			}
+			else
+			{
+				count += _putchar('%');
+				count += _putchar(format[i]);
+			}
+		}
 		else
-			count += write(1, format, 1);
-		++format;
+		{
+			count += _putchar(format[i]);
+		}
+		i++;
 	}
-	va_end(argp);
+
+	va_end(args);
 	return (count);
 }
+

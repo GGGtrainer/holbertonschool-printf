@@ -9,8 +9,7 @@
 
 /*Prototypes*/
 int _printf(const char *format, ...);
-int _putchar();
-int print_digit();
-int _puts();
+int _putchar(int c);
+int print_int(int base);
 
 #endif
