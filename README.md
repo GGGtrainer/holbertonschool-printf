@@ -16,7 +16,7 @@
 
 ## **Project Overview**
 
-The **Printf Project** is a custom implementation of the standard C library function `_printf`. This project aims to mimic the behavior of `_printf` by handling specific format specifiers while also giving developers insights into **variadic functions** and low-level system calls.
+The **Printf Project** is a custom implementation of the standard C library function `printf`. This project aims to mimic the behavior of `printf` by handling specific format specifiers.
 
 ---
 
@@ -24,17 +24,15 @@ The **Printf Project** is a custom implementation of the standard C library func
 
 The purpose of this project is to:
 
-- **Strengthen understanding** of C programming concepts such as variadic functions, memory allocation, and system calls.
-- **Build a foundational understanding** of how standard library functions are implemented.
+- **Improve understanding** of C programming concepts such as variadic functions, memory allocation, and system calls.
 - **Foster collaboration** through team-based development.
 
 ---
 
 ## **Main Features**
 
-- **Custom implementation** of the `_printf` function.
-- **Support** for a subset of `_printf` conversion specifiers.
-- **Extensive testing** to ensure reliability and consistency.
+- **Custom implementation** of the `printf` function.
+- **Support** for a subset of `printf` conversion specifiers.
 
 ---
 
@@ -43,8 +41,6 @@ The purpose of this project is to:
 This project is designed for:
 
 - **Holberton students** learning the intricacies of C programming.
-- **Developers** interested in understanding how functions like `_printf` are implemented under the hood.
-
 ---
 
 ## **Supported Specifiers**
@@ -73,7 +69,7 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
 
 ## **Language**
 
-The creation of the `_printf()` function is being done using the **C programming language**. As a low-level language, C gives us the ability to build and control functions from the ground up while defining their specific outputs.  
+The function `_printf()` was created using the **C programming language**. As a low-level language, C gives us the ability to build and control functions from the ground up while defining their specific outputs.  
 
 Currently, we are in the foundational phase of learning C, and this project serves as a way to test our understanding by implementing `_printf()` entirely from scratch.
 
