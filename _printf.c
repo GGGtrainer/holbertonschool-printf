@@ -19,6 +19,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%' && format[i + 1])
 		{
+			va_end(args);
+			return (-1);
+		}
+		{
 			i++;
 			if (format[i] == 'd' || format[i] == 'i')
 			{
