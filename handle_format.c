@@ -4,6 +4,7 @@
  * handle_format - handles format specifiers for _printf
  * @format: the format string
  * @args: va_list of arguments
+<<<<<<< HEAD
  * @i: pointer to current index in format string*
  * Return: number of characters printed
  */
@@ -40,3 +41,49 @@ int handle_format(const char format, va_list args, inti)
 
     return (count);
 }
+=======
+ * @i: pointer to the current index in the format string
+ *
+ * Return: number of characters printed
+ */
+int handle_format(const char *format, va_list args, int *i)
+{
+	int count = 0;
+
+	(*i)++;
+
+	if (format[*i] == 'd' || format[*i] == 'i')
+	{
+		count += print_int(va_arg(args, int));
+	}
+	else if (format[*i] == 'c')
+	{
+		count += _putchar(va_arg(args, int));
+	}
+	else if (format[*i] == 's')
+	{
+		char *str = va_arg(args, char *);
+		int j = 0;
+
+		if (!str)
+			str = "(null)";
+		while (str[j])
+		{
+			count += _putchar(str[j]);
+			j++;
+		}
+	}
+	else if (format[*i] == '%')
+	{
+		count += _putchar('%');
+	}
+	else
+	{
+		count += _putchar('%');
+		count += _putchar(format[*i]);
+	}
+
+	return (count);
+}
+
+>>>>>>> fd8a3202f5c28116d52226ad974a9153c5b985c1
